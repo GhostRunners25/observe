@@ -1,0 +1,55 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    font-family: "pixel";
+    font-weight: bolder;
+    background-color: black;
+}
+
+canvas {
+    position: absolute;
+    top: -256px;
+    left: -256px;
+    margin-top: 50%;
+    margin-left: 50%;
+}
+
+.controls {
+    position: absolute;
+    margin-top: 50%;
+    top: 270px;
+    margin-left: 50%;
+    left: -67px;
+}
+
+input {
+    font-family: "pixel";
+    font-weight: bolder;
+    border: solid 2px white;
+    background-color: white;
+    color: black;
+    border-radius: 0px;
+    outline: none;
+    height: 16px;
+    line-height: 16px;
+    padding: 2px 4px;
+    text-align: center;
+}
+
+input[type="button"] {
+    margin-left: -1px;
+    cursor: pointer;
+    width: 65px;
+    height: 24px;
+}
+
+input[type="number"] {
+    width: 53px;
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0px;
+}

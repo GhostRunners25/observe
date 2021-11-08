@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>observe</title>
+    <link rel="stylesheet" type="text/css" href="./style/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="./style/main.css" />
+    <script type="text/javascript" language="javascript" src="./js/observe.js"></script>
+    <script type="text/javascript" language="javascript" src="./js/world.js"></script>
+    <script type="text/javascript" language="javascript" src="./js/chunk.js"></script>
+    <script type="text/javascript" language="javascript" src="./js/dictionary.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            const canvas = document.getElementById('main');
+            const ms = document.getElementById('ms-per-frame-num');
+            const updateBtn = document.getElementById('update-btn');
+
+            observe(canvas, ms, updateBtn);
+        }
+    </script>
+</head>
+
+<body>
+    <canvas id="main" width="512" height="512"></canvas>
+    <div class="controls">
+        <input id="ms-per-frame-num" type="number" min="0" value="1000" />
+        <input id="update-btn" type="button" value="update" />
+    </div>
+</body>
+
+</html>
