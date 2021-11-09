@@ -1,5 +1,5 @@
 // incline, normal, decline
-const colour = {
+const colours = {
     air: '#ffffff',
     water: ['', '', '', ''],
     grass: ['', '', ''],
@@ -9,7 +9,7 @@ const colour = {
     snow: ['', '', ''],
 }
 
-const dataType = {
+const dataTypes = {
     air: 0,
     water: 1,
     grass: 2,
@@ -17,4 +17,12 @@ const dataType = {
     stone: 4,
     sand: 5,
     snow: 6,
+}
+
+const directions = {
+    left: -1,
+    right: 1,
+    up: -1,
+    down: 1,
+    none: 0,
 }
