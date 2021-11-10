@@ -27,7 +27,7 @@ function generateEmptyWorld(display, chunkSize) {
 function generateTerrain(seed, height) {
     for (let row = 0; row < rows; row++) {
         for (let column = 0; column < columns; column++) {
-            world[row][column].generateUnderground(height);
+            world[row][column].generateUnderground(Math.ceil(height * 0.5));
         }
     }
 }

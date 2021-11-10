@@ -24,6 +24,6 @@ function observe(canvas, ms, updateBtn) {
     display.fillStyle = 'white';
     display.fillRect(0, 0, 512, 512);
     initialise(display, chunkSize, 4);
-    generateTerrain(0, chunkSize.height / 2);
+    generateTerrain(0, chunkSize.height);
     play();
 }
