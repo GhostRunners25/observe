@@ -1,11 +1,29 @@
+import { chunk } from './chunk.js';
+
 let pixel;
 let world;
 let rows;
 let columns;
 
-function initialise(display, chunkSize, pixelSize) {
+export function initialise(display, chunkSize, pixelSize) {
     pixel = pixelSize;
     generateEmptyWorld(display, chunkSize);
+    generateTerrain(0, chunkSize.height);
+}
+
+export function getChunk(x, y, base, horizontal, vertical) {
+    const position = i => Math.ceil((i / pixel) / base);
+    const calculatedChunk = {
+        x: position(x) + horizontal,
+        y: position(y) + vertical,
+    }
+    if (
+        calculatedChunk.x < 0 || calculatedChunk.x > columns ||
+        calculatedChunk.y < 0 || calculatedChunk.y > rows
+    ) {
+        return false;
+    }
+    return world[calculatedChunk.y][calculatedChunk.x];
 }
 
 function generateEmptyWorld(display, chunkSize) {
@@ -30,21 +48,6 @@ function generateTerrain(seed, height) {
             world[row][column].generateUnderground(Math.ceil(height * 0.5));
         }
     }
-}
-
-function getChunk(x, y, base, horizontal, vertical) {
-    const position = i => Math.ceil((i / pixel) / base);
-    const calculatedChunk = {
-        x: position(x) + horizontal,
-        y: position(y) + vertical,
-    }
-    if (
-        calculatedChunk.x < 0 || calculatedChunk.x > columns ||
-        calculatedChunk.y < 0 || calculatedChunk.y > rows
-    ) {
-        return false;
-    }
-    return world[calculatedChunk.y][calculatedChunk.x];
 }
 
 function renderAllChunks() {

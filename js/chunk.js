@@ -1,4 +1,7 @@
-class chunk {
+import { getChunk } from "./world.js";
+import { dataTypes, directions, colours } from "./dictionary.js";
+
+export class chunk {
     constructor(display, x, y, chunkSize) {
         this.display = display;
         this.x = x;

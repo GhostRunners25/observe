@@ -5,19 +5,7 @@
     <title>observe</title>
     <link rel="stylesheet" type="text/css" href="./style/fonts.css" />
     <link rel="stylesheet" type="text/css" href="./style/main.css" />
-    <script type="text/javascript" language="javascript" src="./js/observe.js"></script>
-    <script type="text/javascript" language="javascript" src="./js/world.js"></script>
-    <script type="text/javascript" language="javascript" src="./js/chunk.js"></script>
-    <script type="text/javascript" language="javascript" src="./js/dictionary.js"></script>
-    <script type="text/javascript">
-        window.onload = function () {
-            const canvas = document.getElementById('main');
-            const ms = document.getElementById('ms-per-frame-num');
-            const updateBtn = document.getElementById('update-btn');
-
-            observe(canvas, ms, updateBtn);
-        }
-    </script>
+    <script type="module" language="javascript" src="./js/observe.js"></script>
 </head>
 
 <body>

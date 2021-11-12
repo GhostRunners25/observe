@@ -1,5 +1,11 @@
-function observe(canvas, ms, updateBtn) {
+import { initialise } from './world.js';
+
+function observe() {
+    const canvas = document.getElementById('main');
+    const ms = document.getElementById('ms-per-frame-num');
+    const updateBtn = document.getElementById('update-btn');
     const display = canvas.getContext('2d');
+
     const chunkSize = { base: 16, height: 64 }
     let interval;
 
@@ -24,6 +30,7 @@ function observe(canvas, ms, updateBtn) {
     display.fillStyle = 'white';
     display.fillRect(0, 0, 512, 512);
     initialise(display, chunkSize, 4);
-    generateTerrain(0, chunkSize.height);
     play();
 }
+
+window.addEventListener('load', observe);

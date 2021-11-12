@@ -1,5 +1,5 @@
 // incline, normal, decline
-const colours = {
+export const colours = {
     air: '#ffffff',
     water: ['', '', '', ''],
     grass: ['', '', ''],
@@ -9,7 +9,7 @@ const colours = {
     snow: ['', '', ''],
 }
 
-const dataTypes = {
+export const dataTypes = {
     air: 0,
     water: 1,
     grass: 2,
@@ -19,7 +19,7 @@ const dataTypes = {
     snow: 6,
 }
 
-const directions = {
+export const directions = {
     left: -1,
     right: 1,
     up: -1,
