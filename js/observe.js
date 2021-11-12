@@ -9,9 +9,7 @@ function observe() {
     const chunkSize = { base: 16, height: 64 }
     let interval;
 
-    updateBtn.onclick = function () {
-        updateInterval();
-    }
+    updateBtn.onclick = updateInterval;
 
     function update() {
 

@@ -12,6 +12,7 @@ canvas {
     left: -256px;
     margin-top: 50%;
     margin-left: 50%;
+    box-shadow: 4px 4px #c6c6c6;
 }
 
 .controls {
@@ -19,10 +20,11 @@ canvas {
     margin-top: 50%;
     top: 270px;
     margin-left: 50%;
-    left: -67px;
+    left: -32px;
 }
 
 input {
+    position: absolute;
     font-family: "pixel";
     font-weight: bolder;
     border: solid 2px white;
@@ -34,17 +36,23 @@ input {
     line-height: 16px;
     padding: 2px 4px;
     text-align: center;
+    box-shadow: 4px 4px #c6c6c6;
+}
+
+input:hover, input[type="number"]:focus {
+    box-shadow: 0px 0px #c6c6c6;
+    margin-top: 4px;
+    margin-left: 4px;
 }
 
 input[type="button"] {
-    margin-left: -1px;
     cursor: pointer;
-    width: 65px;
+    width: 64px;
     height: 24px;
 }
 
 input[type="number"] {
-    width: 53px;
+    width: 52px; /* 64px due to padding + border */
     -moz-appearance: textfield;
 }
 
@@ -52,4 +60,12 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0px;
+}
+
+#ms-per-frame-num {
+    left: -64px;
+}
+
+#update-btn {
+    left: 64px;
 }

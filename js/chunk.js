@@ -31,6 +31,10 @@ export class chunk {
         }
     }
 
+    shading() {
+
+    }
+
     getLayerDataFrom(column) {
         // refactor to 60% world height - use while loop
         const row = this.base - 1;
@@ -50,9 +54,10 @@ export class chunk {
                 let layer = Math.floor(this.height * 0.6);
                 while (layer < this.height - 1 && layer > 0) {
                     if (world[layer][row][column] === dataTypes.air) {
+                        layer--;
 
                     } else {
-
+                        layer++;
                     }
                 }
                 if (previousData) {
