@@ -1,12 +1,22 @@
 // incline, normal, decline
-export const colours = {
-    air: '#ffffff',
-    water: ['', '', '', ''],
-    grass: ['', '', ''],
-    dirt: ['', '', ''],
-    stone: ['', '', ''],
-    sand: ['', '', ''],
-    snow: ['', '', ''],
+export const colours = (dataType) => {
+    switch (dataType) {
+        case dataTypes.water:
+            return ['', '', '', ''];
+        case dataTypes.grass:
+            return ['', '', ''];
+        case dataTypes.dirt:
+            return ['', '', ''];
+        case dataTypes.stone:
+            return ['', '', ''];
+        case dataTypes.sand:
+            return ['', '', ''];
+        case dataTypes.snow:
+            return ['', '', ''];
+        case dataTypes.air:
+        default:
+            return ['#ffffff'];
+    }
 }
 
 export const dataTypes = {

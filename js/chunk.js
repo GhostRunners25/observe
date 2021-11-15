@@ -31,39 +31,81 @@ export class chunk {
         }
     }
 
-    shading() {
-
-    }
-
-    getLayerDataFrom(column) {
-        // refactor to 60% world height - use while loop
+    getLayerHeightFrom(column) {
         const row = this.base - 1;
-        for (let layer = this.height - 1; layer >= 0; layer--) {
-            if (world[layer][row][column] !== dataTypes.air) {
-                return layer;
+        let layer = Math.floor(this.height * 0.6);
+        while (layer < this.height - 1 && layer > 0) {
+            let layerNotAir = this.data[layer][row][column] !== dataTypes.air;
+            if (layerNotAir && this.data[layer + 1][row][column] === dataTypes.air) {
+                break;
             }
+            layer += layerNotAir ? 1 : -1;
         }
-        return 0;
+        return layer;
     }
 
-    render() {
-        const chunkAbove = getChunk(this.x, this.y, this.base, directions.none, directions.up);
-        for (let column = 0; column < this.base; column++) {
-            let previousData = (chunkAbove) ? chunkAbove.getLayerDataFrom(column) : false;
-            for (let row = 0; row < this.base; row++) {
-                let layer = Math.floor(this.height * 0.6);
-                while (layer < this.height - 1 && layer > 0) {
-                    if (world[layer][row][column] === dataTypes.air) {
-                        layer--;
+    shading(dataType, colourList, layer, previousLayer, waterDepth) {
+        switch (dataType) {
+            case dataTypes.air:
+                return colourList[0];
+            case dataTypes.water:
+                return colourList[waterDepth];
+            default:
+                let compare = layer - previousLayer;
+                return (compare === 0) ?
+                    colourList[1] : (compare > 0) ?
+                        colourList[0] : colourList[2];
+        }
+    }
 
-                    } else {
-                        layer++;
+    render(pixel) {
+        const chunkAbove = getChunk(this.x, this.y, this.base, directions.none, directions.up);
+        const clamp = i => (i === 0) ? i + 1 : (i === this.height - 1) ? i - 1 : i;
+        const position = (chunkAxis, axis) => chunkAxis + (axis * pixel);
+        let previousData = { dataType: undefined, colour: undefined };
+        for (let column = 0; column < this.base; column++) {
+            let previousLayer = chunkAbove ?
+                clamp(chunkAbove.getLayerHeightFrom(column)) : Math.floor(this.height * 0.6);
+            for (let row = 0; row < this.base; row++) {
+                let layer = (this.data[this.height - 1][row][column] === dataTypes.air) ?
+                    previousLayer : this.height - 1;
+                let water = { exists: false, depth: 0 };
+                while (layer < this.height - 1 && layer > 0) {
+                    let layerDataType = this.data[layer][row][column];
+                    water.depth += (water.exists) ? 1 : 0;
+                    if (
+                        layerDataType !== dataTypes.air &&
+                        this.data[layer + 1][row][column] === dataTypes.air
+                    ) {
+                        water.exists = layerDataType === dataTypes.water;
+                        if (!water.exists) {
+                            break;
+                        }
                     }
+                    if ((water.exists && layerDataType !== dataTypes.water) || water.depth === 3) {
+                        break;
+                    }
+                    layer += (layerDataType !== dataTypes.air && !water.exists) ? 1 : -1;
                 }
-                if (previousData) {
-                    continue;
-                }
-                previousData = layer;
+                let positions = { x: position(this.x, column), y: position(this.y, row) };
+                let dataType = this.data[layer][row][column];
+                let colourList = dataType === previousData.dataType ?
+                    previousData.colour : colours(dataType);
+                previousData = { dataType, colourList };
+                this.display.fillStyle = this.shading(
+                    dataType,
+                    colourList,
+                    layer,
+                    previousLayer,
+                    water.depth,
+                );
+                this.display.fillRect(
+                    positions.x,
+                    positions.y,
+                    positions.x + pixel,
+                    positions.y + pixel
+                );
+                previousLayer = layer;
             }
         }
     }

@@ -15,10 +15,29 @@ canvas {
     box-shadow: 4px 4px #c6c6c6;
 }
 
-.controls {
+.info {
+    text-align: center;
+    height: 24px;
+    width: 512px;
+    background-color: white;
     position: absolute;
     margin-top: 50%;
     top: 270px;
+    margin-left: 50%;
+    left: -256px;
+    box-shadow: 4px 4px #c6c6c6;
+}
+
+.info p {
+    display: inline-flex;
+    margin: 0px;
+    line-height: 24px;
+}
+
+.controls {
+    position: absolute;
+    margin-top: 50%;
+    top: 308px;
     margin-left: 50%;
     left: -32px;
 }
