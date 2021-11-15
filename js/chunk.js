@@ -44,14 +44,14 @@ export class chunk {
         return layer;
     }
 
-    shading(dataType, colourList, layer, previousLayer, waterDepth) {
+    shading(dataType, colourList, layer, info, waterDepth) {
         switch (dataType) {
             case dataTypes.air:
                 return colourList[0];
             case dataTypes.water:
                 return colourList[waterDepth];
             default:
-                let compare = layer - previousLayer;
+                let compare = !info.exists && info.row === 0 ? 0 : layer - info.height;
                 return (compare === 0) ?
                     colourList[1] : (compare > 0) ?
                         colourList[0] : colourList[2];
@@ -62,7 +62,7 @@ export class chunk {
         const chunkAbove = getChunk(this.x, this.y, this.base, directions.none, directions.up);
         const clamp = i => (i === 0) ? i + 1 : (i === this.height - 1) ? i - 1 : i;
         const position = (chunkAxis, axis) => chunkAxis + (axis * pixel);
-        let previousData = { dataType: undefined, colour: undefined };
+        let previousData = { dataType: false, colourList: false };
         for (let column = 0; column < this.base; column++) {
             let previousLayer = chunkAbove ?
                 clamp(chunkAbove.getLayerHeightFrom(column)) : Math.floor(this.height * 0.6);
@@ -90,13 +90,13 @@ export class chunk {
                 let positions = { x: position(this.x, column), y: position(this.y, row) };
                 let dataType = this.data[layer][row][column];
                 let colourList = dataType === previousData.dataType ?
-                    previousData.colour : colours(dataType);
+                    previousData.colourList : colours(dataType);
                 previousData = { dataType, colourList };
                 this.display.fillStyle = this.shading(
                     dataType,
                     colourList,
                     layer,
-                    previousLayer,
+                    { exists: chunkAbove, height: previousLayer, row },
                     water.depth,
                 );
                 this.display.fillRect(

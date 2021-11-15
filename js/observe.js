@@ -1,7 +1,8 @@
-import { initialise } from './world.js';
+import { initialise, renderAllChunks } from './world.js';
 
 function observe() {
     const canvas = document.getElementById('main');
+    const fps = document.getElementById('fps');
     const ms = document.getElementById('ms-per-frame-num');
     const updateBtn = document.getElementById('update-btn');
     const display = canvas.getContext('2d');
@@ -28,7 +29,9 @@ function observe() {
     display.fillStyle = 'white';
     display.fillRect(0, 0, 512, 512);
     initialise(display, chunkSize, 4);
+    renderAllChunks();
     play();
+    console.log('rendered');
 }
 
 window.addEventListener('load', observe);

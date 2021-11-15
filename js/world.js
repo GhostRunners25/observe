@@ -50,10 +50,10 @@ function generateTerrain(seed, height) {
     }
 }
 
-function renderAllChunks() {
+export function renderAllChunks() {
     for (let row = 0; row < rows; row++) {
         for (let column = 0; column < columns; column++) {
-            world[row][column].render();
+            world[row][column].render(pixel);
         }
     }
 }

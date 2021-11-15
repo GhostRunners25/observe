@@ -4,15 +4,15 @@ export const colours = (dataType) => {
         case dataTypes.water:
             return ['', '', '', ''];
         case dataTypes.grass:
-            return ['', '', ''];
+            return ['#ffffff', '#ffffff', '#ffffff'];
         case dataTypes.dirt:
-            return ['', '', ''];
+            return ['#ffffff', '#ffffff', '#ffffff'];
         case dataTypes.stone:
-            return ['', '', ''];
+            return ['#888888', '#666666', '#222222'];
         case dataTypes.sand:
-            return ['', '', ''];
+            return ['#ffffff', '#ffffff', '#ffffff'];
         case dataTypes.snow:
-            return ['', '', ''];
+            return ['#ffffff', '#ffffff', '#ffffff'];
         case dataTypes.air:
         default:
             return ['#ffffff'];
