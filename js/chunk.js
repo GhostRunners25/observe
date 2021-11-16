@@ -31,6 +31,16 @@ export class chunk {
         }
     }
 
+    generateGround(seed, height) {
+        for (let layer = height; layer < this.height; layer++) {
+            for (let row = 0; row < this.base; row++) {
+                for (let column = 0; column < this.base; column++) {
+
+                }
+            }
+        }
+    }
+
     getLayerHeightFrom(column) {
         const row = this.base - 1;
         let layer = Math.floor(this.height * 0.6);

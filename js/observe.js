@@ -26,8 +26,6 @@ function observe() {
         interval = setInterval(update, ms.value);
     }
 
-    display.fillStyle = 'white';
-    display.fillRect(0, 0, 512, 512);
     initialise(display, chunkSize, 4);
     renderAllChunks();
     play();

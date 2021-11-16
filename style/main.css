@@ -15,7 +15,20 @@ canvas {
     box-shadow: 4px 4px #c6c6c6;
 }
 
-.info {
+.view {
+    text-align: center;
+    height: 24px;
+    width: 512px;
+    background-color: white;
+    position: absolute;
+    margin-top: 50%;
+    top: -294px;
+    margin-left: 50%;
+    left: -256px;
+    box-shadow: 4px 4px #c6c6c6;
+}
+
+.stats {
     text-align: center;
     height: 24px;
     width: 512px;
@@ -28,7 +41,7 @@ canvas {
     box-shadow: 4px 4px #c6c6c6;
 }
 
-.info p {
+p {
     display: inline-flex;
     margin: 0px;
     line-height: 24px;
