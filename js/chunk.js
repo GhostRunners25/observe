@@ -1,5 +1,5 @@
 import { getChunk } from "./world.js";
-import { dataTypes, directions, colours } from "./dictionary.js";
+import { dataTypes, directions, colours, getRandomInt } from "./common.js";
 
 export class chunk {
     constructor(display, x, y, chunkSize) {
@@ -31,11 +31,13 @@ export class chunk {
         }
     }
 
-    generateGround(seed, height) {
-        for (let layer = height; layer < this.height; layer++) {
-            for (let row = 0; row < this.base; row++) {
-                for (let column = 0; column < this.base; column++) {
-
+    generateGround(baseHeight, lower, upper) {
+        // constrain upper so it doesn't go out of the array
+        for (let row = 0; row < this.base; row++) {
+            for (let column = 0; column < this.base; column++) {
+                let height = getRandomInt(lower, upper);
+                for (let layer = baseHeight; layer < height; layer++) {
+                    this.data[layer][row][column] = dataTypes.dirt;
                 }
             }
         }

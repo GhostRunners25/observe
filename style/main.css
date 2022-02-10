@@ -8,37 +8,10 @@ html, body {
 
 canvas {
     position: absolute;
-    top: -256px;
-    left: -256px;
-    margin-top: 50%;
-    margin-left: 50%;
-    box-shadow: 4px 4px #c6c6c6;
-}
-
-.view {
-    text-align: center;
-    height: 24px;
-    width: 512px;
-    background-color: white;
-    position: absolute;
-    margin-top: 50%;
-    top: -294px;
-    margin-left: 50%;
-    left: -256px;
-    box-shadow: 4px 4px #c6c6c6;
-}
-
-.stats {
-    text-align: center;
-    height: 24px;
-    width: 512px;
-    background-color: white;
-    position: absolute;
-    margin-top: 50%;
-    top: 270px;
-    margin-left: 50%;
-    left: -256px;
-    box-shadow: 4px 4px #c6c6c6;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 p {
@@ -48,11 +21,13 @@ p {
 }
 
 .controls {
+    width: 512px;
+    height: 128px;
+    background-color: rgba(30, 30, 30, 0.5);
+    box-shadow: 4px 4px rgba(30, 30, 30, 0.75);
     position: absolute;
-    margin-top: 50%;
-    top: 308px;
-    margin-left: 50%;
-    left: -32px;
+    bottom: 32px;
+    left: 32px;
 }
 
 input {
@@ -95,9 +70,11 @@ input::-webkit-inner-spin-button {
 }
 
 #ms-per-frame-num {
-    left: -64px;
+    left: 16px;
+    bottom: 16px;
 }
 
 #update-btn {
-    left: 64px;
+    right: 16px;
+    bottom: 16px;
 }

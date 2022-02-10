@@ -37,7 +37,12 @@ function generateEmptyWorld(display, chunkSize) {
     for (let row = 0; row < rows; row++) {
         world[row] = new Array(columns);
         for (let column = 0; column < columns; column++) {
-            world[row][column] = new chunk(display, position(column), position(row), chunkSize);
+            world[row][column] = new chunk(
+                display,
+                position(column),
+                position(row),
+                chunkSize
+            );
         }
     }
 }

@@ -2,7 +2,6 @@ import { initialise, renderAllChunks } from './world.js';
 
 function observe() {
     const canvas = document.getElementById('main');
-    const fps = document.getElementById('fps');
     const ms = document.getElementById('ms-per-frame-num');
     const updateBtn = document.getElementById('update-btn');
     const display = canvas.getContext('2d');
@@ -13,7 +12,7 @@ function observe() {
     updateBtn.onclick = updateInterval;
 
     function update() {
-
+        console.log('updated');
     }
 
     function updateInterval() {
@@ -28,7 +27,7 @@ function observe() {
 
     initialise(display, chunkSize, 4);
     renderAllChunks();
-    play();
+    //play();
     console.log('rendered');
 }
 
